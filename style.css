@@ -9,40 +9,50 @@
     margin-right: auto;
     position: static;
     border: solid #000000;
-    grid-column-start: 1;
-    grid-column-end: 2;
+    grid-template-columns: 60% 1fr;
 }
 
 header {
 
     text-align: center;
     font: bold 40px Arial;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
 }
 
 #current-section{
-    display: grid;
-    width: 60%;
     height: 50%;
-    min-height: 50px;
+    min-height: 500px;
     margin-left: 5%;
     margin-right: auto;
     border: black solid 4px;
     grid-column-start: 1;
     grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 6;
+}
+
+#current-section > span{
+    word-wrap: break-word;
 }
 
 #instructions {
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
+
     text-align: center;
-    width: 80%;
+    width: 30%;
     font: bold 20px Arial;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row: 2;
+
+
 }
 
 #buttons {
-    display: block;
     width: 20%;
     margin-left: auto;
     margin-right: auto;
+    grid-column: 2;
+    grid-row: 3;
 }
