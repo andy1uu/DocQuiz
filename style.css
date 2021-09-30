@@ -1,15 +1,16 @@
 
 #main-content {
     
-    width: 60%;
+    width: 90%;
     min-width: 900px;
     max-width: 1600px;
-    display: block;
+    display: grid;
     margin-left: auto;
     margin-right: auto;
     position: static;
-    border: solid black;
-    
+    border: solid #000000;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 header {
@@ -19,16 +20,19 @@ header {
 }
 
 #current-section{
-    display: block;
-    width: 80%;
+    display: grid;
+    width: 60%;
     height: 50%;
-    min-height: 500px;
-    margin-left: auto;
+    min-height: 50px;
+    margin-left: 5%;
     margin-right: auto;
+    border: black solid 4px;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 #instructions {
-    display: block;
+    display: grid;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
