@@ -40,19 +40,20 @@ header {
 #instructions {
 
     text-align: center;
-    width: 30%;
     font: bold 20px Arial;
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row: 2;
 
-
 }
 
 #buttons {
-    width: 20%;
+
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     grid-column: 2;
-    grid-row: 3;
+    grid-row-start: 3;
+    grid-row-end: 6;
+
 }
