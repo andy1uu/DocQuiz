@@ -14,4 +14,4 @@ $(document).ready(function(){
         $(this).parent().children('span').css("background-color", "none");
     });
 
-}
+})
