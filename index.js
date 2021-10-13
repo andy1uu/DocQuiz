@@ -6,12 +6,12 @@
 *
 */
 
-let toggleHighlighting = function(){
-    $('span').css("background-color", "green");
-}
-
 $(document).ready(function(){
 
-    $('span').toggleHighlighting();
+    $('span').hover(function(){
+        $(this).parent().children('span').css("background-color", "green");
+    }, function(){
+        $(this).parent().children('span').css("background-color", "none");
+    });
 
 }
