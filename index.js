@@ -22,7 +22,7 @@ let putCurrentSection = function(){
 }
 
 let increaseTextSize = function(){
-    
+    print(hello)
 }
 
 let decreaseTextSize = function(){
