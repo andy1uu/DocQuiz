@@ -9,7 +9,7 @@
 
 //should take in a paragraph, which is then split into different sentences using some split function, make sure that you maintain ending punctuation, make sure to account for line breaks, Mr. , 
 
-currentParagraph = "On a film set, a real-life tragedy has happened. Police say US actor Alec Baldwin fired a prop gun that killed cinematographer Halyna Hutchins and wounded director Joel Souza on a film set in New Mexico.\r\n They were working on the film Rust. Tributes have been paid to Ms Hutchins, 42, while Mr Baldwin is said to be distraught. One local paper found him in tears outside Santa Fe County Sheriff's Office. An investigation is under way and we don't yet know what went wrong. A spokesman for Mr Baldwin said there had been an accident on the set involving the misfire of a prop gun with blanks. Such incidents are rare and the news has stunned the film industry. The use of firearms on set is subject to stringent safety standards. \"On the film I recently made, even my plastic gun, I had to sign out, sign in every day,\" said Australian actor Rhys Muldoon. \"So that's why this particular case is so incredibly baffling.\" Mr. Chu was going to bed to get his Ph.D. at the U.S.A.";
+currentParagraph = "Note: Students entering the PhD program prior to Spring 2020 are eligible to follow the old rules shown here, but are almost certain to prefer the current rules shown on this page. A student pursuing the Ph.D. degree is expected to exhibit a comprehensive knowledge of a broad cross section of the computer science discipline and to contribute significant new knowledge to the discipline through the research contribution contained in the doctoral dissertation. A PhD student must complete a minimum of 90 credits of graduate study, of which at least 27 must derive from graded courses, with a minimum GPA of 3.0. The PhD program is intended to be completed in about five years from entering the graduate program with a BS degree in Computer Science or a related field, or about four years if the student already has an MS degree in Computer Science or a related field. This is possible because students who begin the PhD program already in possession of a Masters may be able to count as many as four courses toward their course requirement (see section Transfer Credits). To fulfill graduation requirements for the Ph.D. degree, students must satisfy the breadth requirement, adhere to an appropriate credit distribution, enroll in the graduate seminar, comply with the ethics requirement, and complete the major milestones for the degree, including the preliminary exam, research defense and final defense.";
 
 edgeCases = ["Mr.", "Mrs.", "Ms.", "Dr.", "St.", "Inc.", "Ltd.", "Jr.", "Sr.", "Co.", ".com", ".gov", ".net", ".org", ".io"];
 
@@ -42,9 +42,17 @@ let loadNextSection = function(){
 }
 
 let submitButtonFunction = function(){
-// Check if the threshold has been reached, return text, and array of the ids?
+    
+    selectedSentences = "";
 
+    spans = document.getElementsByTagName('span');
 
+    for (i = 0; i < spans.length; i++) {
+        spanClass = spans[i].getAttribute("class"); 
+        if (spanClass == "selectable selected") { 
+            console.log(spans[i]);
+        }
+    }
 }
 
 let increaseTextSize = function(){
@@ -79,9 +87,14 @@ let selectSentence = function(){
             currentCharacterCount -= currentSection[parseInt($(this).attr('id'))].length;
             currentThreshold = currentCharacterCount/sectionCharacterCount;
         }
+
+        $("#submit").prop('disabled', true);
+
     }
     else{
         alert("You may not select anymore sentences!");
+
+        $("#submit").prop('disabled', false);
     }
 }
 
@@ -92,6 +105,10 @@ $(document).ready(function(){
     $("#increase-text-size").click(increaseTextSize);
 
     $("#decrease-text-size").click(decreaseTextSize);
+
+    $("#submit").click(submitButtonFunction);
+
+    $("#submit").prop('disabled', true);
 
     $(".selectable").click(selectSentence);
 
