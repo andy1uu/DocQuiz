@@ -17,7 +17,7 @@ currentSection = currentParagraph.match( /[^\.!\?]+[\.!\?]+/g);
 
 //need to split a section and maintain the formatting
 
-threshold = 0.2;
+threshold = 0.2; huh
 
 currentCharacterCount = 0;
 
