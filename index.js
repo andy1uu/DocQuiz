@@ -27,6 +27,12 @@ let putCurrentSection = function(sectionNum){
 
     $("#current-section").empty();
 
+    currentCharacterCount = 0;
+
+    sectionCharacterCount = 0;
+
+    percentageOfCharactersSelected = 0;
+
     if(sectionNum < paragraphs.length){
 
         for(let currentSectionSentenceIndex = 0; currentSectionSentenceIndex < paragraphs[sectionNum].length; currentSectionSentenceIndex++){
@@ -37,24 +43,39 @@ let putCurrentSection = function(sectionNum){
         }
 
     }
+
+    //$("#submit").prop('disabled', true);
+
+    $(".selectable").click(function(){
+
+        selectSentence($(this), currentSectionNum);
+
+    });
 }
 
 let submitButtonFunction = function(){
     
-    selectedSentences = "";
+    if(currentSectionNum < paragraphs.length){
+        selectedSentences = "";
 
-    spans = document.getElementsByTagName('span');
+        spans = document.getElementsByTagName('span');
 
-    for (i = 0; i < spans.length; i++) {
-        spanClass = spans[i].getAttribute("class"); 
-        if (spanClass == "selectable selected") { 
+        for (i = 0; i < spans.length; i++) {
+            spanClass = spans[i].getAttribute("class"); 
+            if (spanClass == "selectable selected") { 
             console.log(spans[i]);
+            }
         }
+
+        currentSectionNum++;
+
+        putCurrentSection(currentSectionNum);
     }
-
-    currentSectionNum++;
-
-    putCurrentSection(currentSectionNum);
+    else{
+        
+        alert("There are no longer any sections of the document.");
+        $("#submit").prop('disabled', true);
+    }
 }
 
 let increaseTextSize = function(){
@@ -72,17 +93,17 @@ let decreaseTextSize = function(){
 
 }
 
-let selectSentence = function(sectionNum){
+let selectSentence = function(element, sectionNum){
 
     //check if the threshold has been reached for the total number of words, do not allow selection
-    if(percentageOfCharactersSelected <= threshold || $(this).hasClass("selected")){
-        $(this).toggleClass("selected");
+    if(percentageOfCharactersSelected <= threshold || element.hasClass("selected")){
+        element.toggleClass("selected");
 
-        if($(this).hasClass("selected")){
+        if(element.hasClass("selected")){
 
-            $(this).css("background-color", "red");
+            element.css("background-color", "yellow");
             //grabs sentence, get the number of characters from the setence, update the total characters selected
-            currentCharacterCount += paragraphs[sectionNum][parseInt($(this).attr('id'))].length;
+            currentCharacterCount += (paragraphs[sectionNum][parseInt(element.attr('id'))]).length;
             
             percentageOfCharactersSelected = currentCharacterCount/sectionCharacterCount;
 
@@ -91,9 +112,9 @@ let selectSentence = function(sectionNum){
             }
         }
         else{
-            $(this).css("background-color", "");
+            element.css("background-color", "");
             //opposite of selecting
-            currentCharacterCount -= paragraphs[sectionNum][parseInt($(this).attr('id'))].length;
+            currentCharacterCount -= (paragraphs[sectionNum][parseInt(element.attr('id'))]).length;
             percentageOfCharactersSelected = currentCharacterCount/sectionCharacterCount;
 
             if(percentageOfCharactersSelected <= threshold){
@@ -112,20 +133,12 @@ let selectSentence = function(sectionNum){
 
 $(document).ready(function(){
 
-    putCurrentSection(0);
+    putCurrentSection(currentSectionNum);
 
     $("#increase-text-size").click(increaseTextSize);
 
     $("#decrease-text-size").click(decreaseTextSize);
 
     $("#submit").click(submitButtonFunction);
-
-    $("#submit").prop('disabled', true);
-
-    $(".selectable").click(function(){
-
-        selectSentence(currentSectionNum);
-
-    });
 
 });
