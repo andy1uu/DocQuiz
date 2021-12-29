@@ -40,15 +40,14 @@ header {
 
 #no-more-selecting-warning{
     
-    grid-column: 1;
-    grid-row-start: 2;
-    grid-row-end: 6;
+    grid-column: 2;
+    grid-row: 2;
     text-align: center;
-    visibility: hidden;
-    font-size: 70px;
+    opacity: 0;
+    font-size: 24px;
     background-color: red;
-    width: fit-content;
-    height: fit-content;
+    width: 100%;
+    height: 100%;
     border: 4px solid black;
     border-radius: 20px;
 
@@ -104,7 +103,6 @@ header {
 }
 
 #instructions {
-    padding-top: 10%;
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
@@ -112,7 +110,7 @@ header {
     font-weight: 700;
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row: 2;
+    grid-row: 3;
 
 }
 
@@ -123,7 +121,7 @@ header {
     justify-content: center;
     flex-direction: column;
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 4;
      
 }
 

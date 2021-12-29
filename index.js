@@ -164,11 +164,9 @@ let selectSentence = function(element, sectionNum){
     }
     else{
         
-        $("#no-more-selecting-warning").addClass("fade");
-        console.log("commmand workd");
-
+        $("#no-more-selecting-warning").animate({opacity: 1}, 500);
+        $("#no-more-selecting-warning").animate({opacity: 0}, 500);
     }
-    
 }
 
 $(document).ready(function(){
