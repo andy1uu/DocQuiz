@@ -1,0 +1,24 @@
+{
+  "name": "docquiz",
+  "version": "1.0.0",
+  "description": "DocQuiz Research Project for EchoLab @ Virginia Tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andy1uu/DocQuiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andy1uu/DocQuiz/issues"
+  },
+  "homepage": "https://github.com/Andy1uu/DocQuiz#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
