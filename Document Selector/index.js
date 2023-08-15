@@ -93,8 +93,6 @@ let submitButtonFunction = function(){
 
         currentSection = document.getElementsByClassName("selectable");
 
-        console.log(paragraphs[currentSectionNum]);
-
         for (i = 0; i < currentSection.length; i++) {
 
             if(currentSection[i].classList.contains("selected")){
@@ -103,6 +101,7 @@ let submitButtonFunction = function(){
 
         }
 
+        $.post("/new-selected-sentences", paragraphs[currentSectionNum]);
         console.log(selectedSentences);
 
         currentSectionNum++;
